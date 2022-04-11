@@ -15,13 +15,13 @@ Even though Nebraska's season did not go so well, he proved what made him a five
 
 
 
-``` {r echo=FALSE, warning=FALSE, warning=FALSE}
+``` {r echo=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
 library(ggbeeswarm)
 library(gt)
 ```
 
-``` {r echo=FALSE, warning=FALSE, warning=FALSE}
+``` {r echo=FALSE, warning=FALSE, message=FALSE}
 players22 <- read_csv("players22.csv")
 
 freshmen <- players22 %>% filter(Class == "FR")
@@ -32,7 +32,7 @@ big10 <- players22 %>% filter(Conference == "Big Ten")
 
 
 
-```{r}
+```{r echo=FALSE, warning=FALSE, message=FALSE}
 freshmenBigTenPTS <- freshmen %>% filter(Conference == "Big Ten") %>%
   arrange(desc(PTS))
 freshmenBigTenPTS <- slice_head(freshmenBigTenPTS, n = 5)
@@ -50,7 +50,7 @@ We all know Nebraska is not the best basketball school, but that should not take
 
 Getting valuable playing time in a power five conference is not easy, especially for an incoming freshman. Looking at minutes played, we can see how often Bryce was on the court for the whole season. 
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 
 freshmenBigTen <- freshmen %>% filter(Conference == "Big Ten") %>% filter(MP >= 100)
 bryce <- freshmen %>% filter(Player == "Bryce McGowens")
@@ -96,7 +96,7 @@ The worst thing a player can do in basketball is turn the ball over. Let's look 
 
 
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 bm %>% 
   select(Player, `TOV%`, TOV, G) %>% 
   gt() %>% 
@@ -120,19 +120,6 @@ bm %>%
     source_note = md("**By:** Kaden Ross  |  **Source:** Sports Reference")
   )
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
