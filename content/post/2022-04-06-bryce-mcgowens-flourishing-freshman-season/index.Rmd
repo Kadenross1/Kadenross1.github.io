@@ -97,6 +97,7 @@ The worst thing a player can do in basketball is turn the ball over. Let's look 
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
+bm <- rbind2(bryce, mal)
 bm %>% 
   select(Player, `TOV%`, TOV, G) %>% 
   gt() %>% 
