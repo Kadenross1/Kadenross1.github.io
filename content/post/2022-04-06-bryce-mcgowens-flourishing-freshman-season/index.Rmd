@@ -116,7 +116,7 @@ bm %>%
   ) %>% tab_style(
     style = cell_text(color = "red", align = "left"),
     locations = cells_title("subtitle")
-  ) %>%
+  )  %>%
   tab_source_note(
     source_note = md("**By:** Kaden Ross  |  **Source:** Sports Reference")
   )
