@@ -1,0 +1,66 @@
+---
+title: Bryce McGowens Flourishing Freshman Season
+author: Kaden Ross
+date: '2022-04-06'
+slug: bryce-mcgowens-flourishing-freshman-season
+categories: []
+tags: []
+---
+
+
+
+<p>Bryce Mcgowens is the only five star recruit Nebraska has ever had in their basketball program.</p>
+<p>Even though Nebraska’s season did not go so well, McGowens proved what made him a five star recruit with his natural scoring ability.</p>
+<p>Let’s look at where McGowens ranked among other Big Ten freshmen in total points scored throughout the whole season.</p>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.0
+## ✓ readr   2.1.1     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre><code>## Rows: 5667 Columns: 58
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr  (9): Team, Player, Class, Pos, Height, Hometown, High School, Summary, ...
+## dbl (49): #, Weight, Rk.x, G, GS, MP, FG, FGA, FG%, 2P, 2PA, 2P%, 3P, 3PA, 3...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>freshmenBigTenPTS &lt;- freshmen %&gt;% filter(Conference == &quot;Big Ten&quot;) %&gt;%
+  arrange(desc(PTS))
+freshmenBigTenPTS &lt;- slice_head(freshmenBigTenPTS, n = 5)
+
+ggplot() + geom_bar(data=freshmenBigTenPTS, aes(x=reorder(Player, -PTS), weight=PTS))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code>freshmenBigTen &lt;- freshmen %&gt;% filter(Conference == &quot;Big Ten&quot;) %&gt;% filter(MP &gt;= 100)
+bryce &lt;- freshmen %&gt;% filter(Player == &quot;Bryce McGowens&quot;)
+mal &lt;- freshmen %&gt;% filter(Player == &quot;Malaki Branham&quot;)
+ggplot() +
+  geom_vline(xintercept = 502) + 
+  geom_beeswarm(
+    data=freshmenBigTen, 
+    groupOnX=FALSE, 
+    aes(x=MP, y=Player), color=&quot;grey&quot;) + 
+  geom_beeswarm(
+    data=mal, 
+    groupOnX=TRUE, 
+    aes(x=MP, y=Player), color=&quot;blue&quot;) + 
+  geom_beeswarm(
+    data=bryce, 
+    groupOnX=TRUE, 
+    aes(x=MP, y=Player), color=&quot;red&quot;)  +
+labs(x=&quot;Minutes Played&quot;, y=&quot;&quot;, title=&quot;Nebraska&#39;s simple rating is better than 5 conferences&quot;, subtitle=&quot;The Husker&#39;s finished dead last in the Big Ten, but wouldn&#39;t have nearly everywhere else.&quot;, caption=&quot;Source: Sports Reference | By Matt Waite&quot;) + 
+  theme_minimal() + 
+  theme(
+    plot.title = element_text(size = 16, face = &quot;bold&quot;),
+    axis.title = element_text(size = 8), 
+    plot.subtitle = element_text(size=10), 
+    panel.grid.minor = element_blank(),
+    plot.title.position = &quot;plot&quot;,
+    )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre><code>
+```r
+bm &lt;- freshmen %&gt;% filter(Player == &quot;Malaki Branham&quot; || Player == &quot;Bryce McGowens&quot;)</code></pre>

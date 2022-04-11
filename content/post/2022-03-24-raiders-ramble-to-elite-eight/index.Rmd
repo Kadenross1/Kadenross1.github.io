@@ -1,0 +1,16 @@
+---
+title: Bryce Mcgownens Flourishing Freshman Season
+author: Kaden Ross
+date: '2022-03-24'
+slug: how-ready-is-Bryce-Mcgowens-for-the-NBA
+categories: []
+tags: []
+---
+Bryce Mcgowens is the only five star recruit Nebraska has ever had in their basketball program.
+
+Even though Nebraska's season did not go so well, McGowens proved what made him a five recruit with his natural scoring ability.
+
+
+``` {r echo=FALSE, warning=FALSE, warning=FALSE}
+library(tidyverse)
+```
