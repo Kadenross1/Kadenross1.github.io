@@ -17,7 +17,7 @@ library(gt)
 allData <- read_csv("2017NBA.csv")
 fiveHighPoints <- allData %>% arrange(desc(PTS))
 fiveHighPoints <- slice_head(fiveHighPoints, n = 5)
-ggplot() + geom_bar(data=fiveHighPoints, aes(x=reorder(Player, PTS), weight=PTS), fill = "red")+theme_dark()+
+ggplot() + geom_bar(data=fiveHighPoints, aes(x=reorder(Player, PTS), weight=PTS), fill = "white")+theme_dark()+
   labs(x="Total Points", y="Player", title="Who scores the basketball the best?", subtitle="Donovan Mitchell and Jayson Tatum have showcased their special ability to score at such a young age.", caption="Source: Sports Reference | By Kaden Ross") 
 ```
 ```{r}
